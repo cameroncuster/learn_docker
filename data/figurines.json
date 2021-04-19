@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "name": "Yoda",
+        "description": "Master Yoda in a fighting stance with green lightsaber",
+        "price": 18.98
+    },
+    {
+        "id": "2",
+        "name": "Chewbacca",
+        "description": "Chewbacca looking fierce with his bowcaster",
+        "price": 19.25
+    },
+    {
+        "id": "3",
+        "name": "Han Solo",
+        "description": "Han Solo in winter gear riding a Tauntaun",
+        "price": 23.14
+    }
+]

@@ -1,22 +1,22 @@
-const express = require('express');
+const express = require('express')
+const figurines = require('./data/figurines')
 
-const app = express();
-const port = process.env.PORT || 3000;
-const figurineRouter = express.Router();
+const app = express()
+const port = process.env.PORT || 3000
+const figurineRouter = express.Router()
 
-figurineRouter.route('/figurine')
+figurineRouter.route('/figurines')
     .get((req, res) => {
-        const response = {hello: 'This is the GET endpoint'};
 
-    res.json(response);
+    res.json(figurines)
 });
 
-app.use('/api', figurineRouter);
+app.use('/api', figurineRouter)
 
 app.get('/', (req, res) => {
-    res.send('Welcome to our Node Mon API');
+    res.send('Welcome to our Node Mon API')
 });
 
 app.listen(port, () => {
-    console.log('Running on port ' + port);
+    console.log(`Running on port ${port}`)
 });
