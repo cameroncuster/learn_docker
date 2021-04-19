@@ -6,6 +6,14 @@ function findAll() {
     })
 }
 
+function create(figurine) {
+    return new Promise((resolve, reject) => {
+        const newFigurine = {id: '4', ...figurine}
+        figurines.push(newFigurine)
+        resolve(inewFigurine)
+    })
+}
+
 function findByID(id) {
     return new Promise((resolve, reject) => {
         const figurine = figurines.find((p) => p.id === id)
@@ -15,5 +23,6 @@ function findByID(id) {
 
 module.exports = {
     findAll,
-    findByID
+    findByID,
+    create
 }

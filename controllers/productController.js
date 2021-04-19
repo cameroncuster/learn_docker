@@ -12,6 +12,25 @@ async function getProducts(req, res) {
     }
 }
 
+// @desc        Create a Figurine
+// @route       POST /api/figurines
+async function createProduct(req, res) {
+    try {
+        const figurine = {
+            name: 'R2D2',
+            description: 'R2D2 with his multi-tool exteneded for action',
+            price: 100
+        }
+
+        const newFigurine = await Product.create(figurine)
+
+        res.json(newFigurine)
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
 // @desc        Gets Single Figurines by ID
 // @route       GET /api/figurines/:id
 async function getProduct(req, res) {
@@ -31,5 +50,6 @@ async function getProduct(req, res) {
 
 module.exports = {
     getProducts,
-    getProduct
+    getProduct,
+    createProduct
 }
