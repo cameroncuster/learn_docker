@@ -1,5 +1,6 @@
 const express = require('express')
-const figurines = require('./data/figurines')
+
+const { getProducts } = require('./controllers/productController')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -7,8 +8,7 @@ const figurineRouter = express.Router()
 
 figurineRouter.route('/figurines')
     .get((req, res) => {
-
-    res.json(figurines)
+        getProducts(req, res)
 });
 
 app.use('/api', figurineRouter)
