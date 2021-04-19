@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { getProducts } = require('./controllers/productController')
+const { getProducts, getProduct } = require('./controllers/productController')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -9,6 +9,11 @@ const figurineRouter = express.Router()
 figurineRouter.route('/figurines')
     .get((req, res) => {
         getProducts(req, res)
+});
+
+figurineRouter.route('/figurines/:id')
+    .get((req, res) => {
+        getProduct(req, res)
 });
 
 app.use('/api', figurineRouter)
