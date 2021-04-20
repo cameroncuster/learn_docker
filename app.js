@@ -6,6 +6,8 @@ const app = express()
 const port = process.env.PORT || 3000
 const figurineRouter = express.Router()
 
+app.use(express.json())
+
 figurineRouter.route('/figurines')
     .get((req, res) => {
         getProducts(req, res)

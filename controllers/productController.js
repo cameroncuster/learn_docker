@@ -16,10 +16,13 @@ async function getProducts(req, res) {
 // @route       POST /api/figurines
 async function createProduct(req, res) {
     try {
+
+        const { name, description, price } = req.body
+
         const figurine = {
-            name: 'R2D2',
-            description: 'R2D2 with his multi-tool exteneded for action',
-            price: 100
+            name,
+            description,
+            price
         }
 
         const newFigurine = await Product.create(figurine)
