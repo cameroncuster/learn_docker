@@ -1,4 +1,7 @@
 const figurines = require('../data/figurines')
+const { v4: uuidv4 } = require('uuid')
+
+const { writeFile } = require('../utils')
 
 function findAll() {
     return new Promise((resolve, reject) => {
@@ -8,8 +11,9 @@ function findAll() {
 
 function create(figurine) {
     return new Promise((resolve, reject) => {
-        const newFigurine = {id: '4', ...figurine}
+        const newFigurine = {id: uuidv4(), ...figurine}
         figurines.push(newFigurine)
+        writeFile('./data/figurines.json', figurines)
         resolve(inewFigurine)
     })
 }
