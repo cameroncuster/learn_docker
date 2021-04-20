@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { getProducts, getProduct, createProduct, updateProduct } = require('./controllers/productController')
+const { getProducts, getProduct, createProduct, updateProduct, removeProduct } = require('./controllers/productController')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -26,6 +26,11 @@ figurineRouter.route('/figurines')
 figurineRouter.route('/figurines')
     .put((req, res) => {
         updateProduct(req, res)
+});
+
+figurineRouter.route('/figurines')
+    .delete((req, res) => {
+        removeProduct(req, res)
 });
 
 app.use('/api', figurineRouter)

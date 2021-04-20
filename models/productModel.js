@@ -1,4 +1,4 @@
-const figurines = require('../data/figurines')
+let figurines = require('../data/figurines')
 const { v4: uuidv4 } = require('uuid')
 
 const { writeFile } = require('../utils')
@@ -27,6 +27,14 @@ function update(id, modified) {
     })
 }
 
+function remove(id) {
+    return new Promise((resolve, reject) => {
+        figurines = figurines.filter((p) => p.id !== id)
+        writeFile('./data/figurines.json', figurines)
+        resolve()
+    })
+}
+
 function findByID(id) {
     return new Promise((resolve, reject) => {
         const figurine = figurines.find((p) => p.id === id)
@@ -38,5 +46,6 @@ module.exports = {
     findAll,
     findByID,
     create,
-    update
+    update,
+    remove
 }

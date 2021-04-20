@@ -78,9 +78,28 @@ async function getProduct(req, res) {
     }
 }
 
+// @desc        Removes a Single Figurines by ID
+// @route       DELETE /api/figurines/:id
+async function removeProduct(req, res) {
+    try {
+        const figurines = await Product.findByID(req.params.id)
+
+        if (!figurine) {
+            res.sendStatus(404)
+        } else {
+            await Product.remove(req.params.id)
+            res.json({ message: `Product ${req.params.id} has been removed`})
+        }
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
     getProducts,
     getProduct,
     createProduct,
-    updateProduct
+    updateProduct,
+    removeProduct
 }
