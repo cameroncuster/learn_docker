@@ -34,6 +34,33 @@ async function createProduct(req, res) {
     }
 }
 
+// @desc        Update a Figurine
+// @route       PUT /api/figurines
+async function updateProduct(req, res) {
+    try {
+        const figurines = await Product.findByID(req.params.id)
+
+        if (!figurine) {
+            res.sendStatus(404)
+        } else {
+
+            const { name, description, price } = req.body
+            const modified = {
+                name: name || figurine.name,
+                description: description || figurine.description,
+                price: price || figurine.price
+            }
+
+            const updatedFigurine = await Product.update(req.params.id, modified)
+
+            res.json(updatedFigurine)
+        }
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
 // @desc        Gets Single Figurines by ID
 // @route       GET /api/figurines/:id
 async function getProduct(req, res) {
@@ -54,5 +81,6 @@ async function getProduct(req, res) {
 module.exports = {
     getProducts,
     getProduct,
-    createProduct
+    createProduct,
+    updateProduct
 }

@@ -18,6 +18,15 @@ function create(figurine) {
     })
 }
 
+function update(id, modified) {
+    return new Promise((resolve, reject) => {
+        const index = figurines.findIndex((p) => p.id === id)
+        figurines[index] = {id, ...modified}
+        writeFile('./data/figurines.json', figurines)
+        resolve(figurines[index])
+    })
+}
+
 function findByID(id) {
     return new Promise((resolve, reject) => {
         const figurine = figurines.find((p) => p.id === id)
@@ -28,5 +37,6 @@ function findByID(id) {
 module.exports = {
     findAll,
     findByID,
-    create
+    create,
+    update
 }
