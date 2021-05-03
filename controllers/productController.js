@@ -38,7 +38,7 @@ async function createProduct(req, res) {
 // @route       PUT /api/figurines
 async function updateProduct(req, res) {
     try {
-        const figurines = await Product.findByID(req.params.id)
+        const figurine = await Product.findByID(req.params.id)
 
         if (!figurine) {
             res.sendStatus(404)
@@ -61,11 +61,11 @@ async function updateProduct(req, res) {
     }
 }
 
-// @desc        Gets Single Figurines by ID
-// @route       GET /api/figurines/:id
+// @desc        Gets Single Figurine by ID
+// @route       GET /api/figurine/:id
 async function getProduct(req, res) {
     try {
-        const figurines = await Product.findByID(req.params.id)
+        const figurine = await Product.findByID(req.params.id)
 
         if (!figurine) {
             res.sendStatus(404)
@@ -78,11 +78,11 @@ async function getProduct(req, res) {
     }
 }
 
-// @desc        Removes a Single Figurines by ID
-// @route       DELETE /api/figurines/:id
+// @desc        Removes a Single Figurine by ID
+// @route       DELETE /api/figurine/:id
 async function removeProduct(req, res) {
     try {
-        const figurines = await Product.findByID(req.params.id)
+        const figurine = await Product.findByID(req.params.id)
 
         if (!figurine) {
             res.sendStatus(404)
