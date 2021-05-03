@@ -13,7 +13,7 @@ figurineRouter.route('/figurines')
         getProducts(req, res)
 });
 
-figurineRouter.route('/figurine/:id')
+figurineRouter.route('/figurines/:id')
     .get((req, res) => {
         getProduct(req, res)
 });
